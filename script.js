@@ -14,80 +14,82 @@ $(document).ready(function(){
         }else{
             document.querySelector('#scroll-top').classList.remove('active');
         }
-// scroll spy
-$('section').each(function(){
-    let height = $(this).height();
-    let offset = $(this).offset().top - 200;
-    let top = $(window).scrollTop();
-    let id = $(this).attr('id');
 
-    if(top>offset && top<offset+height){
-        $('.navbar ul li a').removeClass('active');
-        $('.navbar').find(`[href="#${id}"]`).addClass('active');
-    }
-});
-});
+        // scroll spy
+        $('section').each(function(){
+            let height = $(this).height();
+            let offset = $(this).offset().top - 200;
+            let top = $(window).scrollTop();
+            let id = $(this).attr('id');
 
-// smooth scrolling
-$('a[href*="#"]').on('click',function(e){
-e.preventDefault();
-$('html, body').animate({
-    scrollTop : $($(this).attr('href')).offset().top,
-},500, 'linear')
-})
+            if(top>offset && top<offset+height){
+                $('.navbar ul li a').removeClass('active');
+                $('.navbar').find(`[href="#${id}"]`).addClass('active');
+            }
+        });
+    });
+
+    // smooth scrolling
+    $('a[href*="#"]').on('click',function(e){
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop : $($(this).attr('href')).offset().top,
+        },500, 'linear')
+    })
 });
 
 document.addEventListener('visibilitychange',
 function(){
-if(document.visibilityState === "visible"){
-document.title = "Portfolio | Vaishali Gaur";
-$("#favicon").attr("href","assests/images/favicon.png");
-}
-else {
-document.title = "Come Back To Portfolio";
-
-}
+    if(document.visibilityState === "visible"){
+        document.title = "Portfolio | Vaishali Gaur";
+        $("#favicon").attr("href","assests/images/favicon.png");
+    }
+    else {
+        document.title = "Come Back To Portfolio";
+        
+    }
 });
 
 
 // <!-- typed js effect starts -->
-var typed = new Typed(".typing-text", {
-strings: ["Frontend Web development", "Tech Communities"],
-loop: true,
-typeSpeed: 50,
-backSpeed: 25,
-backDelay: 500,
-});
+    var typed = new Typed(".typing-text", {
+        strings: ["Frontend Web development", "Tech Enthusiast", "Tech Communities"],
+        loop: true,
+        typeSpeed: 50,
+		backSpeed: 25,
+		backDelay: 500,
+      });
 // <!-- typed js effect ends -->
+
 // <!-- tilt js effect starts -->
-VanillaTilt.init(document.querySelectorAll(".tilt"), {
-    max: 15,
-  });
+      VanillaTilt.init(document.querySelectorAll(".tilt"), {
+        max: 15,
+      });
 // <!-- tilt js effect ends -->
 
 
 
 
 
-// <!-- emailjs to mail contact form data -->
+ // <!-- emailjs to mail contact form data -->
+ 
+ $("#contact-form").submit(function (event) {
+    //event.preventdefault();
 
-$("#contact-form").submit(function (event) {
-//event.preventdefault();
-
-
-event.preventDefault();
-emailjs.init("-L45b_OvcTAJElwgr");
-console.log("form submitted");
-emailjs.sendForm('service_044d7ep', 'template_usr78qm', '#contact-form')
-    .then(function (response) {
-        console.log('SUCCESS!', response.status, response.text);
-        document.getElementById("contact-form").reset();
-        alert("Form Submitted Successfully");
-    }, function (error) {
-        console.log('FAILED...', error);
-        alert("Form Submission Failed! Try Again");
-    });
-
+    
+    event.preventDefault();
+    emailjs.init("-L45b_OvcTAJElwgr");
+    console.log("form submitted");
+    emailjs.sendForm('service_044d7ep', 'template_usr78qm', '#contact-form')
+        .then(function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+            document.getElementById("contact-form").reset();
+            alert("Form Submitted Successfully");
+        }, function (error) {
+            console.log('FAILED...', error);
+            alert("Form Submission Failed! Try Again");
+        });
+    
 });
 
 
@@ -95,41 +97,41 @@ emailjs.sendForm('service_044d7ep', 'template_usr78qm', '#contact-form')
 
 /* ===== SCROLL REVEAL ANIMATION ===== */
 const srtop = ScrollReveal({
-origin: 'top',
-distance: '80px',
-duration: 1000,
-reset: true
+    origin: 'top',
+    distance: '80px',
+    duration: 1000,
+    reset: true
 });
 
 
 
 async function fetchData(type = "skills") {
-let response
-type === "skills" ?
-    response = await fetch("skills.json")
-    :
-    response = await fetch("./projects/projects.json")
-const data = await response.json();
-return data;
+    let response
+    type === "skills" ?
+        response = await fetch("skills.json")
+        :
+        response = await fetch("./projects/projects.json")
+    const data = await response.json();
+    return data;
 }
 
 function showSkills(skills) {
-let skillsContainer = document.getElementById("skillsContainer");
-let skillHTML = "";
-skills.forEach(skill => {
-    skillHTML += `
-    <div class="bar">
-          <div class="info">
-            <img src=${skill.icon} alt="skill" />
-            <span>${skill.name}</span>
-          </div>
-        </div>`
-});
-skillsContainer.innerHTML = skillHTML;
+    let skillsContainer = document.getElementById("skillsContainer");
+    let skillHTML = "";
+    skills.forEach(skill => {
+        skillHTML += `
+        <div class="bar">
+              <div class="info">
+                <img src=${skill.icon} alt="skill" />
+                <span>${skill.name}</span>
+              </div>
+            </div>`
+    });
+    skillsContainer.innerHTML = skillHTML;
 }
 
 fetchData().then(data => {
-showSkills(data);
+    showSkills(data);
 });
 
 /* SCROLL HOME */
