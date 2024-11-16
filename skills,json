@@ -1,6 +1,30 @@
 [
     
     {
+        "name": "Python",
+        "icon": "https://img.icons8.com/color/48/000000/python.png"
+    },
+    {
+        "name": "Data Analysis",
+        "icon": "https://img.icons8.com/color/48/000000/graph.png"
+    },
+    {
+        "name": "Bootstrap",
+        "icon": "https://img.icons8.com/color/48/000000/bootstrap.png"
+    },
+    {
+        "name": "HTML5",
+        "icon": [
+    
+    {
+        "name": "Python",
+        "icon": "https://img.icons8.com/color/48/000000/python.png"
+    },
+    {
+        "name": "Data Analysis",
+        "icon": "https://img.icons8.com/color/48/000000/graph.png"
+    },
+    {
         "name": "Bootstrap",
         "icon": "https://img.icons8.com/color/48/000000/bootstrap.png"
     },
@@ -29,10 +53,6 @@
         "icon": "https://img.icons8.com/color/48/000000/c.png"
     },
     {
-        "name": "Git VCS",
-        "icon": "https://img.icons8.com/color/48/000000/git.png"
-    },
-    {
         "name": "GitHub",
         "icon": "https://img.icons8.com/glyph-neue/48/ffffff/github.png"
     },
@@ -42,7 +62,7 @@
     }, 
     {
         "name": "Data Structure and Algorithm",
-        "icon": "https://img.icons8.com/color/48/000000/spreadsheet.png"
+        "icon": "https://img.icons8.com/color/48/000000/list.png"
     } ,
     {
         "name": "MS Office",
